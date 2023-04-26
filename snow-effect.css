@@ -1,0 +1,42 @@
+body {
+   height: 100vh;
+ }
+/* Snow effect */
+.snow-flake {
+   position: absolute;
+   top: -50px;
+   pointer-events: none;
+}
+
+@keyframes falling {
+   0% {
+       top: -100px;
+       transform: rotate(0deg);
+   }
+   100% {
+       top: 100%;
+       transform: rotate(360deg);
+   }
+}
+
+/* Add a random animation-delay for each snowflake */
+.snow-flake {
+   animation-duration: 3s;
+   animation-timing-function: linear;
+   animation-iteration-count: infinite;
+   animation-name: falling;
+}
+
+.snow-flake.sf-0 {
+   animation-delay: 0.34s;
+}
+
+.snow-flake.sf-1 {
+   animation-delay: 0.42s;
+}
+
+.snow-flake.sf-2 {
+   animation-delay: 1.15s;
+}
+
+/* Add more .sf-* classes with different animation-delay values for more snowflakes */

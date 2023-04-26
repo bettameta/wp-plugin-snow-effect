@@ -2,50 +2,16 @@
 /**
  * Plugin Name: Snow Effect
  * Description: Adds a falling snow effect to all pages.
- * Version: 1.2
+ * Version: 1.7
  * Author: Reese St Amant
  * Author URI: https://bettameta.com
  */
 
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
- defined( 'ABSPATH' ) OR exit;
+function snow_effect_enqueue_scripts() {
+    wp_enqueue_script( 'snow-script', plugin_dir_url( __FILE__ ) . 'snow-effect.js', array( 'jquery' ), '1.0', true );
+    wp_enqueue_style( 'snow-style', plugin_dir_url( __FILE__ ) . 'snow-effect.css', array(), '1.0' );
+}
+add_action( 'wp_enqueue_scripts', 'snow_effect_enqueue_scripts' );
 
- add_action( 'wp_enqueue_scripts', 'wpse_snow_effect_enqueue_scripts' );
- add_action( 'wp_head', 'wpse_snow_effect' );
- 
- function wpse_snow_effect_enqueue_scripts() {
-     wp_enqueue_script( 'snow', plugin_dir_url( __FILE__ ) . 'snow.js', array( 'jquery' ), '1.0', true );
- }
- 
- function wpse_snow_effect() {
- ?>
- <script>
- jQuery(document).ready(function($) {
-   // Create the snow effect
-   var snow = new Snow( {
-     flakeCount: 100,
-     minSize: 10,
-     maxSize: 20,
-     flakeColor: '#ffffff',
-     flakeSpeed: 2,
-     flakeOpacity: 0.7,
-     flakeType: 'circle',
-     // Add randomness to the snowflakes' movement
-     movement: {
-         speed: {
-             x: 1,
-             y: 1
-         },
-         direction: {
-             x: -1,
-             y: -1
-         }
-     }
-   } );
- 
-   // Add the snow effect to the document body
-   snow.addTo( document.body );
- });
- </script>
- <?php
- }
