@@ -1,3 +1,4 @@
+/* Making the Snow fall randomly */
 (function($) {
   $(document).ready(function() {
       var snowflakes = 100;
